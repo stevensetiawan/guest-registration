@@ -1,0 +1,103 @@
+<%- include('./partial/header') %>
+<body class="login-page">
+    <div class="container-login">
+        <div class="login-background">
+            <div class="logo-login">
+                <img src="/image/polytron_logo TW White.png" alt="">
+           </div>
+        </div>
+            <div class="wraper">
+                <form class="login-form">
+                    <div>
+                        <img src="/image/polytron_logoTW.png" alt="" id="logo-phone" hidden>
+                    </div>
+                    <h1 class="login-form-title">Expedition aLogin</h1>
+
+                    <div class="form-floating">
+                        <input type="text" name="username" id="username-login" class="form-control" placeholder="Nomor Karyawan">
+                    </div>
+                    <div class="form-floating show-password">
+                        <input type="password"  name="password" id="password-login" class="form-control" id="loginPassword" placeholder="Kata Sandi">
+                        <div><i class="fa fa-eye" aria-hidden="true" id="togglePassword" style="cursor: pointer;margin-left: -30px"></i></div>
+                    </div>
+                    <div class="button-message">
+                        <button id="button-login"class="btn-red" type="button" onclick="login_verification()">Login</button>
+                        <p id="error-message"></p>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+
+    <%- include('./partial/javascript') %>
+    <script>
+
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password-login");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the icon
+            this.classList.toggle("fa-eye-slash");
+        });
+
+
+    function login_verification() {
+            var username = $("#username-login").val()
+            var password = $("#password-login").val()
+            if (username == "" || username == null) {
+                $("#error-message").show()
+                $("#error-message").html("Mohon lengkapi data diatas!")
+                return
+            } else if (password == "" || password == null) {
+                $("#error-message").show()
+                $("#error-message").html("Mohon lengkapi data diatas !")
+                return
+            } else {
+                $.ajax({
+                    method: "POST",
+                    url: "/panel/auth/login/submit",
+                    data: {
+                        username: username,
+                        password: password
+                    }
+                }).done(function (res) {
+                    // handle this
+                    if (res.error_code == "200") {
+                        window.location.href = "/panel/tracker/"
+                    } else {
+                        console.log(res.message)
+                        $("#error-message").show()
+                        $("#error-message").html(res.message)
+                        // $(".whole-spinner").hide()
+                    }
+                })
+            }
+        }
+
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                document.getElementById("button-login").click();
+            }
+        });
+
+        //buat show password
+            function showPassword() {
+            var x = document.getElementById("password-login");
+            if (x.type === "password") {
+                x.type = "text";
+                $('#icon-password').addClass('fa-eye');
+                $('#icon-password').removeClass('fa-eye-slash');
+            } else {
+                x.type = "password";
+                $('#icon-password').addClass('fa-eye-slash');
+                $('#icon-password').removeClass('fa-eye');
+            }
+        }
+    </script>
+</body>
+
+</html>

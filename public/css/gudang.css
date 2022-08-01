@@ -1,0 +1,1990 @@
+/* div{
+  border-style: dotted;
+} */
+/* .table-keluar ,tr{
+  border-style: double;
+} */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/*================= LOGIN ================= */
+/* Button merah di login */
+.btn-red {
+  background-color: #d91921;
+  border-color: #d91921;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 6px 22px;
+  font-family: "Open Sans-Bold";
+  touch-action: manipulation;
+  margin-top: 5px;
+  border-style: solid;
+  box-sizing: border-box !important;
+}
+
+.login-page{
+  overflow: hidden !important;
+}
+
+.btn-red:hover {
+  color: #ffffff;
+  background-color: #dd2e34;
+  border-color: #dd2e34;
+}
+
+/* login */
+.container-login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* logo login */
+
+.logo-login {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+/* img logo */
+.logo-login img {
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 35%;
+  margin-bottom: 35%;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.wraper {
+  width: 41%;
+  background: #ffffff;
+  position: relative;
+  padding: 7%;
+  align-items: center;
+}
+
+/* form */
+.wraper .form-floating {
+  padding-bottom: 20px;
+  font-size: 16px;
+  width: 434px;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-floating input{
+max-width: 350px ;
+}
+
+.show-password {
+  display: flex;
+  justify-content: flex-start !important;
+}
+/* background login */
+.login-background {
+  background-image: url('/image/login.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 59%;
+  /* min */
+  height: 120vh;
+  position: relative;
+  z-index: 1;
+}
+
+.login-background::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 40, 40, 0) 0%,
+    rgba(217, 25, 33, 0.85) 68.23%
+  );
+}
+
+/* login form */
+.login-form {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  align-items: center;
+}
+
+/* login form title */
+.login-form-title {
+  font-family: "Open Sans-Bold";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 53px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+#error-message{
+  text-align: right;
+  color: #d91921;
+  margin: 10px;
+  vertical-align: middle;
+  float: right;
+  font-size: 12px;
+};
+
+.button-message{
+  display: flex;
+  justify-content: space-between;
+}
+/* =============================================== */
+
+/*================= BARANG MASUK ================= */
+
+#modal_panel_tracker_barang_masuk {
+  top: -25px;
+}
+#modal_panel_tracker_barang_masuk .modal-content{
+  left: 28px;
+}
+
+/* Barang masuk table */
+.barang-title {
+  font-size: 11px;
+  font-weight: 400;
+  /* margin-left: 12px; */
+  margin-bottom: 5px;
+}
+
+/* button reset di dalam barang masuk */
+.btn-reset {
+  background-color: #ffffff;
+  border: 1px solid #d91921;
+  color: #d91921;
+  font-weight: 600;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.btn-reset:hover {
+  color: #ffffff;
+  background-color: #d91921;
+}
+
+/* button submit */
+.btn-submit {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* warna selector receiver */
+#panel_tracker_receiver {
+  background-color: #eee;
+}
+
+.form-barang {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px ;
+}
+
+.select2-container{
+  max-width: 400px !important;
+}
+
+
+/* button + dan - di barang_masuk */
+.btn.btn-barang,
+.btn.btn-barang[disabled] {
+  background-color: #ffffff;
+  border: 1px solid #d9d0e3;
+  border-radius: 0px 7px 7px 0px;
+  color: #979797;
+}
+
+.btn.btn-barang:not([disabled]):hover,
+.btn.btn-barang:not([disabled]):active,
+.btn.btn-barang[disabled]:not([disabled]):hover,
+.btn.btn-barang[disabled]:not([disabled]):active {
+  background-color: rgba(221, 221, 221, 0.55);
+  color: #979797;
+}
+
+.table-condensed .no-margin.td{
+  width: 100px;
+}
+
+/* =============================================== */
+
+/*================= LACAK / TRACKER ================= */
+/* table lacak barang */
+.table-barang {
+  width: 100%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+  width: 875px;
+  /* table-layout: auto; */
+}
+/* spacer dari tiap row*/
+.table-barang#data_table_tracker {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+/* custom head table */
+.table-barang th {
+  font-family: "Open Sans-Bold" !important;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* custom body table */
+.table-barang tbody {
+  font-family: "Open Sans";
+  font-size: 14px;
+}
+
+/* custom untuk kolom table */
+.table-barang td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  font-weight: 500;
+}
+
+/* custom background */
+.table-barang tbody tr:nth-child(odd) {
+  background-color: #e5e5e5;
+}
+.table-barang tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+/* custom kolom ship code */
+.table-barang tr td:first-child {
+  font-family: "Open Sans-SemiBold";
+  padding-left: 70px;
+  width: 220px;
+}
+.table-barang thead th:first-child {
+  padding-left: 70px;
+}
+/* custom kolom status */
+
+
+/* custom kolom status */
+.table-barang thead th:nth-child(3) {
+  text-align: left;
+
+}
+.table-barang tr td:nth-child(3) {
+  width: 200px;
+}
+.table-barang tr td:nth-child(2) {
+  width: 200px;
+}
+
+
+/* button barang keluar */
+#add_barang_keluar {
+  background-color: #d91921;
+  padding: 3px 6px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+/* untuk posisi button barang masuk*/
+.dt-buttons {
+  float: right;
+}
+
+/* search box */
+#data_table_tracker_filter .form-control {
+  background: url(/image/Vector.png);
+  background-position: 11px 6px !important;
+  border-radius: 8px;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  padding: 12px 0px 12px 40px; /* Add some padding */
+  border: 1px solid #bdbdbd; /* Add a grey border */
+  margin-left: -45px;
+  position: relative;
+}
+
+/* filter box */
+#data_table_tracker_length .form-control {
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding-right: 0;
+  margin-left: 35px;
+  position: relative;
+  width: 100%;
+}
+#data_table_tracker_length {
+  width: 100%;
+}
+#data_table_tracker_length select {
+  padding: 6px 11px !important;
+}
+
+/* button masuk */
+.btn-masuk {
+  margin-right: 25px;
+  border-radius: 6px !important;
+}
+/* pagination tracker*/
+.pagination > li > a,
+.pagination > li > span {
+  background-color: white;
+  border: none;
+  border-radius: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.pagination > li.active > a,
+.pagination > li.active > span {
+  background-color: #d91921;
+  border-radius: 30px;
+}
+
+.pagination > li > a,
+.pagination > li > span:hover {
+  background-color: white;
+  border-radius: 30px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+
+#data_table_tracker_first {
+  display: none;
+}
+#data_table_tracker_last {
+  display: none;
+}
+
+/* agar posisi pagination di center page */
+div.dataTables_wrapper div.dataTables_paginate {
+  text-align: center;
+}
+
+.disable-page:hover{
+  cursor: not-allowed;
+}
+
+.edit-tracker{
+  align-items: center;
+}
+
+.btn-edit{
+  color: #5c5858;
+  border: 2px solid #d4d1d1;
+  background-color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: "Open Sans-SemiBold";
+}
+
+.btn-edit:hover{
+  color: #d91921;
+  border: 2px solid #d91921;
+
+}
+
+.btn-edit:hover > img {
+  filter: invert(54%) sepia(99%) saturate(6813%) hue-rotate(343deg) brightness(82%) contrast(109%);;
+}
+/* =============================================== */
+
+/*================= DETAILS BARANG ================= */
+
+.detail h3 {
+  font-family: "Open Sans-Bold";
+  color: #d91921;
+  font-weight: 700;
+  font-size: 30px;
+  display: inline;
+  margin-left: 10px !important;
+}
+
+span p {
+  display: inline;
+  font-size: 15px;
+  float: right;
+  color: #000000;
+}
+
+
+.btn-otp {
+  background-color: #ffb249;
+  border: 1px solid #ffb249;
+  color: #ffffff;
+}
+
+.btn-otp:hover {
+  background-color: #eb9f34;
+  border: 1px solid #ffb349dc;
+  color: #ffffff;
+}
+/* table untuk detail di tiap status */
+.table-detail {
+  font-family: "Open Sans";
+  font-size: 15px !important;
+  border-collapse: separate;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  line-height: 33px;
+}
+
+.table-detail th {
+  color: #333333;
+  /* font-weight: 400 !important; */
+  text-align: center !important;
+}
+
+.table-detail thead tr {
+  background-color: #ebebeb;
+  height: 30px;
+}
+
+.table-detail tr td {
+  text-align: center;
+}
+/* round table */
+.table-detail th:first-of-type {
+  border-top-left-radius: 10px;
+}
+.table-detail th:last-of-type {
+  border-top-right-radius: 10px;
+}
+.table-detail tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+.table-detail tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  width: fit-content;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  border: 1px solid rgba(36, 36, 36, 0.3);
+  box-sizing: border-box;
+  border-radius: 25px;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 0px;
+  transition: 0.3s;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  margin: 15px 0 15px 15px;
+  width: 160px;
+  font-weight: 600;
+  background: #ffffff;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  border: 1px solid #d91921;
+  color: #d91921;
+}
+
+/* hover icon */
+.tab button:hover > img {
+  /* red */
+  filter: invert(54%) sepia(99%) saturate(6813%) hue-rotate(343deg) brightness(82%) contrast(109%);
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #d91921;
+  border: 1px solid #d91921;
+  color: #ffffff;
+}
+
+/* icon when active */
+.tab .active > img{
+  /* white */
+  filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(249deg) brightness(105%) contrast(104%);
+}
+
+/* active hover */
+.tab button.active:hover > img{
+  filter: invert(100%) sepia(0%) saturate(7483%) hue-rotate(249deg) brightness(105%) contrast(104%);
+}
+
+.table-tab {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.table-tab button {
+  margin-right: 10px;
+}
+
+
+
+/* =============================================== */
+
+/* ================= ARRIVING TAB ================= */
+/* hide filter dan search */
+#data_table_arriving_filter {
+  display: none;
+}
+
+#data_table_arriving_length {
+  display: none;
+}
+
+#data_table_arriving_info {
+  display: none;
+}
+
+#data_table_arriving_paginate {
+  display: none;
+}
+/* =============================================== */
+
+/* ================= TRANSIT TAB ================= */
+/* hide filter dan search */
+#data_table_transit_filter {
+  display: none;
+}
+
+#data_table_transit_length {
+  display: none;
+}
+
+#data_table_transit_info {
+  display: none;
+}
+
+#data_table_transit_paginate {
+  display: none;
+}
+/* =============================================== */
+/* ================= SHIP TAB ================= */
+/* hide filter dan search */
+#data_table_ship_filter {
+  display: none;
+}
+
+#data_table_ship_length {
+  display: none;
+}
+
+#data_table_ship_info {
+  display: none;
+}
+
+#data_table_ship_paginate {
+  display: none;
+}
+/* =============================================== */
+/* ============== READY TO SHIP TAB =============== */
+/* hide filter dan search */
+#data_table_ready_to_ship_filter {
+  display: none;
+}
+
+#data_table_ready_to_ship_length {
+  display: none;
+}
+
+#data_table_ready_to_ship_info {
+  display: none;
+}
+
+#data_table_ready_to_ship_paginate {
+  display: none;
+}
+/* =============================================== */
+/* ============== DELIVERED TAB =============== */
+/* hide filter dan search */
+#data_table_delivered_filter {
+  display: none;
+}
+
+#data_table_delivered_length {
+  display: none;
+}
+
+#data_table_delivered_info {
+  display: none;
+}
+
+#data_table_delivered_paginate {
+  display: none;
+}
+/* =============================================== */
+/* ======== TABLE IN PRINT DELIVERY NOTE ========== */
+
+#data_table_delivery_note_item_out_filter {
+  display: none;
+}
+#data_table_delivery_note_item_out_info {
+  display: none;
+}
+#data_table_delivery_note_item_out_paginate {
+  display: none;
+}
+#data_table_delivery_note_item_out_length {
+  display: none;
+}
+
+
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+  padding-right: 8px;
+}
+
+th.sorting_asc::after,
+th.sorting_desc::after {
+  content: "" !important;
+}
+th.sorting_asc::before,
+th.sorting_desc::before {
+  content: "" !important;
+}
+
+
+#add_delivery_note_in{
+  margin-top: 30px;
+}
+
+#add_delivery_note_out{
+  margin-top: 30px;
+}
+/* =============================================== */
+/* ======= FORM VERIFICATION ( IN / OUT)  ========= */
+.logo-verification img {
+  max-height: auto;
+  max-width: 250px;
+}
+
+.form-verification {
+  max-width: 250px !important;
+}
+
+.input-group {
+  font-size: 12px !important;
+  max-width: 250px !important;
+}
+.form-verification input {
+  background-color: rgba(238, 238, 238, 0.8) !important;
+  border: 1px solid #d9d0e3 !important;
+  box-sizing: border-box !important;
+  border-radius: 8px !important;
+  width: 240px !important;
+  padding: 4px 10px;
+  height: 28px;
+}
+
+.form-verification p {
+  font-size: 12px !important;
+  color: rgba(149, 134, 168, 0.8) !important;
+  margin: 17px 0 3px 8px !important;
+  text-align: left !important;
+}
+.input-group input {
+  height: 34px;
+  max-width: 240px !important;
+  box-sizing: border-box !important;
+  background-color: #ffffff !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-group input::placeholder{
+  color: #a7a49e9a ;
+}
+.input-group input:focus {
+  border: 1px solid #d91921;
+  outline: none;
+}
+
+.input-group-addon {
+  font-size: 12px;
+  color: #9586a8;
+  margin: 17px 0 3px 8px;
+  text-align: left;
+}
+#inline-qr {
+  display: inline-flex;
+  width: inherit;
+}
+#inline-qr div p {
+  margin: 17px 0 3px 8px;
+}
+
+#inline-qr div input {
+  width: 110px !important;
+  background-color: rgba(238, 238, 238, 0.8) !important;
+}
+/* jarak antar form */
+#inline-qr div input:first-of-type {
+  margin-right: 17px;
+  margin-left: 3px;
+}
+
+/* div input foto */
+.div-input {
+  min-width: 242px;
+  max-width: fit-content;
+  /* padding: 0 2px; */
+  min-height: 240px;
+  max-height: fit-content;
+  background-color: #f9f9fb;
+  margin-top: 30px;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  border: 2px dashed #c2c7d4;
+}
+
+#imagePreview::before{
+  width: 235px;
+  height: 235px;
+
+}
+#imagePreview{
+  border-radius: 8px;
+  padding: 5px;
+  width: 100%;
+  height: fit-content;
+  object-fit: contain;
+}
+
+
+/* labelnya */
+.div-input label {
+  color: #000000;
+  margin: auto;
+  padding: 30px;
+}
+
+/* button submit */
+
+@media only screen and (max-width: 500px) {
+  .bg-image {
+    background-image: none !important ;
+  }
+  .content-body {
+    top: 20px;
+    justify-content: center;
+  }
+}
+.content-body {
+  top: 70px;
+  bottom: 100px;
+  justify-content: center;
+}
+/* =============================================== */
+/* ============ VERIFICATION SUCCESS ==============*/
+
+.success {
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px 7px;
+}
+
+.success-border {
+  transition: ease-in-out 100ms;
+  padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+.success h3 {
+  margin-top: 30px;
+  color: #d91921;
+  font-family: "Open Sans-Bold";
+  font-weight: 700;
+}
+.success-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.success-detail {
+  margin-top: -10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.success-data {
+  margin-top: 30px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: justify;
+}
+
+#success-close {
+  margin-top: 20px;
+  width: 190px;
+}
+
+#success-close:active {
+  border: none !important;
+}
+
+/* CUSTOM SHOW LOG (DROP DOWN) */
+#show-log{
+  background-color: #ffffff !important;
+  color: #ed1c23d8 !important;
+  float: right !important;
+  border: none;
+}
+
+#show-log:hover{
+  background-color: rgba(217, 25, 33, 0.7) !important;
+  color: #ffffff !important;
+}
+
+#data_table_log_detail_ship_code_filter{
+  display: none;
+}
+
+
+.table-log{
+  /* box-shadow: 0 4px 2px -2px rgb(223, 216, 216); */
+  text-align: justify;
+}
+.table-log tbody tr:nth-child(odd) {
+  background-color: rgba(255, 242, 242, 0.7);
+}
+
+.table-log th{
+  padding : 10px 50px !important;
+}
+.table-log td{
+  font-size: 15px;
+  padding : 10px 50px;
+}
+.table-log th:nth-child(4){
+  padding : 6px 30px 6px 100px !important;
+}
+.table-log td:nth-child(4){
+ text-align: right;
+}
+
+
+@media only screen and (max-width: 300px), screen and (max-height: 700px) {
+  #success-container {
+    width: 80%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+/*================================================= */
+/* ========= CUSTOM PRINT DELIVERY NOTE  ==========*/
+.print-title {
+  color: #888888;
+  font-family: "Open Sans-SemiBold";
+  font-size: 15px;
+}
+.print-value {
+  color: #000000;
+  font-family: "Open Sans-SemiBold";
+  font-size: 17px;
+}
+.table-print {
+  font-size: 15px;
+  border: 1px solid #00000065;
+}
+
+.table-print th {
+  font-size: 15px !important;
+  color: #000000 !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
+
+.table-print thead th {
+  background-color: #ebebeb;
+  height: 30px;
+  font-family: "Open Sans-SemiBold";
+}
+
+.table-print td {
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.table-print tbody {
+  font-size: 13px;
+}
+
+/* =============================================== */
+/* ================= BARANG KELUAR =============== */
+title-keluar {
+  font-family: "Open Sans-Bold";
+  font-weight: 700;
+  font-size: 47px;
+  line-height: 64px;
+}
+.keluar-label {
+  font-size: 13px;
+  padding-left: 20px;
+}
+
+#panel_tracker_form_add_keluar input {
+  border-radius: 8px;
+}
+
+#panel_tracker_ship_code_keluar {
+  width: 374px;
+}
+
+#panel_tracker_form_add_keluar select {
+  border-radius: 8px;
+}
+
+.table-keluar {
+  border-radius: 10px;
+  border-collapse: separate;
+  font-size: 12px !important;
+  margin-top: 10px;
+}
+
+.table-keluar thead th {
+  font-size: 13px !important;
+  color: #ffffff !important;
+  font-family: "Open Sans-SemiBold";
+  text-align: center !important;
+  align-items: center;
+  vertical-align: middle !important;
+  height: 50px;
+}
+
+.table-keluar input {
+  border-radius: 5px !important;
+}
+
+.table-keluar th {
+  margin-top: 20px;
+}
+
+/* round table */
+.table-keluar tbody:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+.table-keluar tbody:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+.table-keluar thead:first-child th:first-of-type {
+  border-top-left-radius: 8px;
+}
+.table-keluar thead:first-child th:last-of-type {
+  border-top-right-radius: 8px;
+}
+
+/* border */
+.table-keluar tbody tr:last-child td {
+  border-bottom: 1px solid #d9d0e3;
+}
+
+/* border samping kiri */
+.table-keluar tr td:first-of-type{
+  border-left: 1px solid #d9d0e3 ;
+}
+
+/* border samping kanan */
+.table-keluar tr td:last-of-type{
+  /* border-left: 1px solid #d9d0e3 ; */
+  border-right: 1px solid #d9d0e3 ;
+}
+
+
+/* ========== batas border ======== */
+.btn-remove-delivery {
+  background-color: #ffffff;
+  color: #ff4100;
+  font-size: 20px;
+  padding: 2px 7px;
+  margin-right: 5px;
+}
+
+.btn-remove-delivery:hover {
+  background-color: #f17c55ec;
+  color: #ffffff;
+}
+#add_item {
+  color: #ff9500;
+  background-color: #ffffff;
+  border: #ffffff;
+}
+
+#add_item i {
+  font-size: 16px;
+}
+
+.btn-remove-item {
+  background-color: #ff9500;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 2px px;
+}
+
+#save_panel_tracker_keluar,
+#update_panel_tracker_keluar {
+  margin-right: 30px;
+  width: 100px;
+}
+
+.btn-pdf{
+  background-color: #D91921;
+  border: 1px solid #D91921;
+  color: #ffffff;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-border-radius: 5.6px;
+  -moz-border-radius: 5.6px;
+  -ms-border-radius: 5.6px;
+  border-radius: 5px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 6px 12px;
+  width: 155px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-pdf:hover{
+  background-color: #ffffff;
+  border: 1px solid #d91921;
+  color: #d91921;
+}
+
+.btn-pdf:disabled,
+btn-pdf[disabled]{
+  background-color: #B1B1B1 ;
+  border: #B1B1B1;
+  color: #ffffff;
+}
+/* =============================================== */
+/* ============= RECEIVER MANAGEMENT ============= */
+#data_table_receiver_filter {
+  text-align: left !important;
+  float: left !important;
+}
+
+#data_table_receiver_filter .form-control {
+  background: url(/image/Vector.png);
+  background-position: 11px 6px !important;
+  border-radius: 8px;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  padding: 12px 0px 12px 40px; /* Add some padding */
+  border: 1px solid #bdbdbd; /* Add a grey border */
+  margin-left: 0 !important;
+  /* margin-top: -10px; */
+}
+
+.table-management {
+  color: #000000 !important;
+  margin-top: 30px;
+}
+.table-management thead th {
+  font-family: "Open Sans-SemiBold";
+  font-weight: 600;
+  font-size: 18px;
+  padding: 6px 30px;
+}
+
+.table-management thead th:nth-child(5) {
+  color: white;
+}
+.table-management td {
+  font-size: 16px;
+  padding: 6px 30px;
+  font-family: "Open Sans-Light";
+}
+.table-management tbody tr:nth-child(odd) {
+  background-color: rgba(255, 242, 242, 0.7);
+}
+
+/* spacer dari tiap row*/
+.table-management#data_table_receiver {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+/* .btn-add-receiver:hover {
+  background: #940006 !important;
+} */
+
+.delete-btn {
+  cursor: pointer;
+}
+.update-btn {
+  cursor: pointer;
+}
+/* hover btn delete user */
+.delete-btn:hover {
+  filter: invert(40%) sepia(56%) saturate(2382%) hue-rotate(327deg)
+    brightness(98%) contrast(78%) !important;
+}
+
+/* hover btn update user  */
+.update-btn:hover {
+  filter: invert(40%) sepia(56%) saturate(2382%) hue-rotate(327deg)
+    brightness(98%) contrast(78%) !important;
+}
+
+.btn-confirm-popup{
+  border-radius: 20px;
+  width: 270px;
+  background-color: #d91921;
+  color: #ffffff !important;
+  font-family: 'Montserrat-Semi-Bold' !important;
+  order: 1 !important;
+  font-size: 13px !important;
+}
+.btn-cancel{
+  color: #000000;
+  border-radius: 20px;
+  background-color: #ffffff;
+  width: 270px;
+  font-family: 'Montserrat-Semi-Bold' !important;
+  order: 2 !important;
+  font-size: 13px !important;
+}
+
+
+/* =============================================== */
+/* ============= ADD & UPDATE RECEIVER ==================== */
+.add-title {
+  color: #d91921 !important;
+  font-size: 15px !important;
+  font-family: "Open Sans-SemiBold" !important;
+  margin-left: 50px;
+}
+
+.add-user {
+  border-top: 6px solid #d91921 !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  width: 420px;
+  height: 528px;
+}
+
+.form-add-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px
+}
+
+#panel_receiver_form_add input,
+#panel_receiver_form_update input {
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #d9d0e3 !important;
+}
+
+.btn-save {
+  margin-left: 75px;
+  margin-top: 28px;
+  width: 100px;
+  float: left;
+}
+
+/* untuk geser position pop up */
+#pop-up-receiver {
+  transform: translate(31vh, 49vh) translate(0, -50%) !important;
+}
+#pop-up-update {
+  transform: translate(31vh, 49vh) translate(0, -50%) !important;
+}
+
+/* ==================== DNO VERIFICATION ================*/
+.table-item-verification {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-item-verification td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.table-item-verification td:nth-child(odd) {
+  padding: 1% 12px 5px 0px;
+}
+.table-item-verification td:nth-child(even) {
+  padding: 1% 0px 1% 5%;
+}
+
+/* ============================================== */
+/* ================= CUTOM SWAL =================*/
+.swal2-warning{
+  color: #D91921 !important;
+  border-color: #D91921 !important;
+  height: 60px;
+  width: 60px;
+}
+.swal2-error{
+  color: #D91921 !important;
+  border-color: #D91921 !important;
+}
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line]{
+  background-color: #D91921 !important;
+}
+.swal2-popup{
+  border-radius: 16px !important;
+  max-width: 340px !important;
+}
+
+.swal2-styled.swal2-confirm{
+  border-radius: 20px !important;
+  width: 270px;
+  background-color: #d91921 !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat-Semi-Bold' !important;
+  order: 1 !important;
+  font-size: 13px !important;
+}
+
+.swal2-title{
+  color: #000000 !important;
+  font-family: 'Open Sans-Bold' !important;
+  font-size: 20px !important;
+
+}
+.swal2-icon-content{
+  font-size: 6em;
+}
+
+.swal2-html-container{
+  font-size: 12px !important;
+}
+
+.title-popup{
+  font-weight: 700 !important;
+  font-size: 22px !important;
+}
+
+/* .popup-dn{
+  max-width: 300px !important;
+} */
+
+.popup-tracker{
+  left: 110px !important;
+}
+
+.popup-receiver{
+  left: 102px;
+}
+
+.popup-warning{
+  left: 85px;
+}
+
+.popup-management{
+  left: 63px;
+}
+.popup-dno{
+  width: 340px !important;
+  right: 9px !important;
+}
+/* ================= ERROR PAGE =================*/
+.error-page{
+  background: url(/image/errorpage-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.error-box h1{
+  font-family: "Open Sans-Bold";
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.error-box h3 {
+  font-size: 27px;
+  color: #FFFFFF;
+}
+
+.btn-back{
+  background-color: #ffffff;
+  color:#3B3A3A;
+  padding: 11px 19px;
+  font-family: "Open Sans-Bold";
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.btn-back:hover{
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: #3B3A3A !important;
+  text-decoration: none !important;
+}
+/* .btn-back a:hover{
+  color: #000000;
+} */
+
+.error-box{
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  margin-top: 135px;
+}
+/* ===============================================*/
+/* =================== NAV BAR =================== */
+.navbar.navbar-default{
+  background-color: #ffffff;
+  box-shadow: 0 8px 8px -4px #dad8d8;
+}
+
+.navbar .dropdown-menu {
+  margin-top: 5px !important;
+}
+
+.dropdown.user-menu
+.dropdown-toggle{
+  color: #000000 !important;
+  font-weight: bold;
+}
+
+.dropdown-menu{
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 10px !important;
+}
+
+.dropdown.user-menu{
+  margin-right: 26px;
+}
+
+/* ini untuk background hover navbar user */
+.navbar.navbar-default .navbar-nav > li > a:hover{
+  background-color: transparent !important;
+
+}
+.navbar.navbar-default .navbar-nav > .open > a:hover, .navbar.navbar-default .navbar-nav > .open > a:focus{
+  background-color: transparent !important;
+}
+
+.navbar.navbar-default .navbar-nav > .open > a{
+  background-color: transparent !important;
+}
+
+/* ini untuk text di dropdown user log out */
+.navbar.navbar-default .navbar-nav .dropdown.user-menu .dropdown-menu .header .user{
+  color: #000000;
+  display: flex ;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* untuk dropdownnya */
+.dropdown-menu .header{
+  min-width: 200px !important;
+  background-color: #ffffff;
+  border: none !important;
+}
+
+#dropdownMenu{
+  width: 200px;
+}
+/* ini untuk nav label */
+.nav-label{
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* ini untuk title role nya */
+.navbar.navbar-default .navbar-nav .dropdown.user-menu
+.dropdown-menu .header .user .title{
+  font-weight: 700 !important;
+  font-size: 13px;
+}
+/* button log out */
+.btn-logout{
+  color: #FFFFFF !important ;
+  border: 1px solid #d91921;
+  font-size: 13px ;
+  border-radius: 6px;
+  font-weight: 700;
+  padding: 3px 8px;
+  background-color: #d91921;
+  float: right;
+
+}
+
+/* untuk status user */
+.status-user{
+  color:  #BC6C00;
+  background-color: #FFE2BB;
+  border-radius: 3px;
+  padding: 2px 3px;
+  font-weight: 800;
+  font-size: 10px;
+}
+
+.navbar.navbar-default .navbar-nav .dropdown.user-menu .dropdown-menu .footer{
+  background-color: #ffffff;
+}
+/* =============================================== */
+/* ================== SIDE BAR =================== */
+/* not active */
+.sidebar .sidebar-nav .metismenu li a{
+  color: rgba(255, 255, 255, 0.5);
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .sidebar-nav .metismenu li img{
+  opacity: 0.4;
+}
+
+/* active */
+.sidebar .sidebar-nav .metismenu li.active a{
+  color: rgba(255, 255, 255, 1);
+}
+.sidebar .sidebar-nav .metismenu li.active img{
+  opacity: 1;
+}
+
+/* hover  */
+.sidebar .sidebar-nav .metismenu li:hover{
+  background-color: #b31419f6;
+
+}
+.sidebar .sidebar-nav .metismenu li:hover a{
+  color: rgba(255, 255, 255, 1);
+}
+
+.sidebar .sidebar-nav .metismenu li:hover img{
+  opacity: 1;
+}
+
+/* =============================================== */
+/* ============ Admin User Management ============= */
+.management-title{
+  color: #d91921 ;
+  font-size: 20px;
+  font-family: "Open Sans-Bold" ;
+  margin-left: 25px;
+}
+
+/* ini length di admin user */
+#data_table_length .form-control{
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding-right: 45px;
+  position: relative;
+  width: 100%;
+}
+
+/* ini search di admin user */
+#data_table_filter .form-control{
+  background: url(/image/Vector.png);
+  background-position: 11px 6px !important;
+  border-radius: 8px;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  padding: 12px 0px 12px 40px; /* Add some padding */
+  border: 1px solid #bdbdbd; /* Add a grey border */
+  margin-left: -71px;
+}
+
+#data_table_filter select {
+  padding: 6px 11px !important;
+}
+
+.search_nik{
+  display: inline-flex;
+
+}
+
+#panel_user_role{
+  width: 150px;
+  border-radius: 8px;
+}
+.modal-management{
+  border-top: 6px solid #d91921 !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  /* width: 500px; */
+  /* height: 528px; */
+}
+
+.search-input,
+.update-input{
+  border-radius: 6px;
+  padding: 6px 40px;
+  background: url(/image/Vector.png);
+  background-position: 11px 6px !important;
+  border-radius: 8px;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  border: 1px solid #bdbdbd;
+}
+
+.search-input{
+  width: 560px;
+}
+.update-input {
+  width: 660px;
+}
+
+#get_user_data{
+  margin-left: 30px;
+}
+
+.btn-search,
+.btn-search:active,
+.btn-search[disabled],
+.btn-search:not([disabled]):hover,
+.btn-search:not([disabled]):active{
+  border: 1px solid #d91921;
+  color: #d91921 !important;
+  background-color: #ffffff;
+}
+
+.btn-search:hover,
+.btn.btn-search:not([disabled]):hover,
+.btn.btn-search:not([disabled]):active,
+.btn.btn-search[disabled]:not([disabled]):hover,
+.btn.btn-search[disabled]:not([disabled]):active{
+  color: #ffffff !important;
+  background-color: #d91921;
+}
+
+.admin-label{
+  margin-bottom: 5px;
+}
+
+.admin-row{
+  display: flex;
+  margin-bottom: 20px;
+  padding: 0 15px;
+  font-size: 15px;
+}
+
+.btn-admin,
+.btn-warehouse,
+.btn-excel,
+.btn-supplier {
+  border-radius: 6px !important;
+}
+
+/* =============================================== */
+
+/* ========== WAREHOUSE MANAGEMENT =============== */
+/* ini lenth di warehouse */
+#data_table_warehouse_length .form-control{
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding-right: 45px;
+  position: relative;
+  width: 100%;
+}
+
+/* ini search di warehouse */
+#data_table_warehouse_filter .form-control{
+  background: url(/image/Vector.png);
+  background-position: 11px 6px !important;
+  border-radius: 8px;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  padding: 12px 0px 12px 40px; /* Add some padding */
+  border: 1px solid #bdbdbd; /* Add a grey border */
+  margin-left: -68px;
+}
+
+.warehouse-input,
+.supplier-input{
+  width: 490px;
+  /* max-width: 490px; */
+  border-radius: 6px;
+  padding: 6px;
+  border: 1px solid #bdbdbd;
+}
+/* =============================================== */
+/* ========== Supplier Management ================= */
+.btn-excel{
+  margin-left: 10px !important;
+}
+
+#data_table_supplier_length .form-control{
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding-right: 45px;
+  position: relative;
+  width: 100%;
+}
+
+/* ini search di supplier */
+#data_table_supplier_filter .form-control{
+  background: url(/image/Vector.png);
+  background-position: 11px 6px !important;
+  border-radius: 8px;
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  padding: 12px 0px 12px 40px; /* Add some padding */
+  border: 1px solid #bdbdbd; /* Add a grey border */
+  margin-left: -68px;
+}
+
+/* =============================================== */
+/* ======= UPDATE STATUS TRACKER =============== */
+#panel_ship_code_update,
+#panel_status_update{
+  border-radius: 8px;
+}
+/* =============================================== */
+/*
+*
+*
+*/
+/* ================= CUSTOM UMUM =================*/
+
+.btn{
+  font-family: "Open Sans" ;
+}
+
+h1{
+  font-weight: 700;
+  font-family: 'Open Sans-Bold';
+}
+/* custom line height 1.5 */
+.lh-15 {
+  line-height: 1.5;
+}
+
+/* line horizontal decoration */
+hr {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  border-top: 3px solid #d91921;
+  float: left;
+}
+
+.no-margin {
+  margin: 0;
+}
+input {
+  color: #000000;
+}
+
+
+.topright {
+  display: none;
+}
+
+.dataTables_filter {
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+
+.left-col {
+  float: left;
+  width: 20%;
+}
+
+.center-col {
+  float: left;
+  width: 20%;
+}
+
+.right-col {
+  float: left;
+  width: 60%;
+}
+.pagination {
+  display: inline-flex;
+}
+
+.padding {
+  padding: 10px 25px 0 25px !important;
+}
+
+.panel-default {
+  border: none !important;
+}
+.dashboard-heading {
+  padding-bottom: 0 !important;
+}
+
+img[alt] {
+  font-size: 10px;
+}
+
+.dataTables_info {
+  display: none;
+}
+
+.m-top-bottom{
+  margin: 15px 0;
+}
+
+.select2-container .select2-results__option{
+  font-size: 13px !important;
+}
+
+/* =============================================== */
+/* ============== MEDIA QUERY ==================== */
+/* media query */
+
+@media only screen and (max-width: 1318px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: -30px !important;
+  }
+}
+@media only screen and (max-width: 1218px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: -10px !important;
+  }
+}
+@media only screen and (max-width: 1118px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: 0 !important;
+  }
+}
+@media only screen and (max-width: 1060px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: 10px !important;
+  }
+}
+@media only screen and (max-width: 980px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: 20px !important;
+  }
+}
+@media only screen and (max-width: 930px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: 30px !important;
+  }
+}
+@media only screen and (max-width: 880px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: 40px !important;
+  }
+}
+@media only screen and (max-width: 800px) {
+  #data_table_tracker_filter .form-control {
+    margin-left: 50px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  div.table-responsive>div.dataTables_wrapper>div.row{
+    display: flex ;
+  }
+
+  #data_table_tracker_filter .form-control {
+    margin-left: 20px !important;
+  }
+  .navbar-brand .logo{
+    max-width: 200px;
+  }
+}
+@media screen and (max-height: 546px) {
+  .login-page{
+    overflow: hidden;
+  }
+
+  .login-background{
+    height: 150vh;
+  }
+
+}
+/* laptop */
+@media only screen and (max-width: 1024px){
+
+  .wraper .form-floating{
+    width: 300px;
+  }
+  .tab button{
+    width: 120px;
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
+/* tablet */
+@media only screen and (max-width: 768px){
+
+  .tab button{
+    width: 80px;
+    font-size: 9px;
+    padding: 3px;
+  }
+  .wraper .form-floating{
+    width: 200px;
+    font-size: 14px;
+  }
+
+  .logo-login{
+    padding: 0;
+    vertical-align: middle;
+  }
+
+  .logo-login img{
+    max-width: 300px;
+    vertical-align: middle;
+    margin-top: 50%;
+    margin-bottom: 50%;
+  }
+
+  .login-form-title{
+    font-size: 20px;
+  }
+
+  .btn-red{
+    padding: 4px 20px;
+  }
+
+  .login-form{
+    padding-top: 40%;
+  }
+
+  #error-message{
+    float: left;
+    margin-left: 0;
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 425px){
+  .login-background{
+    display: none;
+  }
+
+  .wraper{
+    z-index: 1;
+    padding: 10%;
+    width: 100%;
+    background-image: url('/image/login.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    vertical-align: middle;
+  }
+
+  .wraper.wraper::before{
+    content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180.99deg, rgba(255, 135, 135, 0) 0.81%,
+              rgba(130, 6, 11, 0.63) 77.98%);
+  }
+  .wraper .form-floating {
+    width: 100%;
+    /* margin: auto; */
+  }
+
+  .form-floating input{
+    border-radius: 8px;
+
+  }
+
+  .login-form{
+    /* position: absolute; */
+    left: 25%;
+    top: 30%;
+    background-color: #ffffff;
+    padding: 30px 20px 60px 20px;
+    margin-top: 30%;
+    border-radius: 20px;
+    vertical-align: middle;
+  }
+
+  .login-form-title{
+    margin-top: 35px;
+    font-size: 19px;
+    line-height: normal;
+  }
+  .btn-red{
+    width: 100%;
+    font-size: 13px ;
+  }
+
+  .button-message{
+    display: block;
+  }
+
+  #error-message{
+    float: left;
+    margin-left: 0;
+  }
+
+  #logo-phone{
+    display: block;
+    max-width: 200px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-control{
+    font-size: 12px !important;
+  }
+
+  #error-message{
+    font-size: 10px;
+  }
+
+}
+
+
+#img_evidence{
+  padding: 20px 0;
+  transform: rotate(90deg) translateY(0);
+  -webkit-transform: rotate(90deg) translateY(0);
+  -ms-transform: rotate(90deg) translateY(0);
+ }
+/* =============================================== */
+

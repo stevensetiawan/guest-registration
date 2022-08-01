@@ -1,0 +1,66 @@
+/* @font-face {
+  font-family: "Montserrat";
+  src: url("../../font/montserrat/Montserrat-Black.otf") format("opentype");
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../font/montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url("../../font/montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../font/montserrat/Montserrat-Light.otf") format("opentype");
+} */
+
+@font-face {
+  font-family: "Montserrat-Semi-Bold";
+  src: url("../../font/montserrat/Montserrat-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Open Sans-Bold";
+  src: url("../font/open-sans/OpenSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans-Semibold";
+  src: url("../font/open-sans/OpenSans-Semibold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url("../font/open-sans/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans-Light";
+  src: url("../font/open-sans/OpenSans-Light.ttf") format("truetype");
+}
+
+/* fallback */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/material-icon/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2")
+    format("woff2");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}

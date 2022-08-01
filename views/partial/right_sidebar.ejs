@@ -1,0 +1,103 @@
+<aside class="right-sidebar">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#tab_overview" data-toggle="tab">OVERVIEW</a></li>
+        <li role="presentation"><a href="#tab_settings" data-toggle="tab">SETTINGS</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="right-sidebar-close">
+            <i class="fa fa-times"></i>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in active" id="tab_overview">
+            <div class="tab-container">
+                <label>UPCOMING EVENTS</label>
+                <ul>
+                    <li>
+                        <b class="display-block">Business Meeting</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Dinner With John</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Deadline Project For E-Commerce</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Last Check For E-Comerce</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Ask For Vacation</b> Lorem ipsum dolor sit amet
+                    </li>
+                </ul>
+
+                <label>TODO LIST</label>
+                <ul>
+                    <li>
+                        <b class="display-block">Get To Know More HTML5</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Get To Know More CSS3 - Transitions</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Learn AngularJS</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Learn AngularJS Routing</b> Lorem ipsum dolor sit amet
+                    </li>
+                    <li>
+                        <b class="display-block">Get To Know More jQuery v3</b> Lorem ipsum dolor sit amet
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="tab_settings">
+            <div class="tab-container">
+                <label>GENERAL SETTINGS</label>
+                <ul>
+                    <li>
+                        <span>Report Panel Usage</span>
+                        <div class="switch">
+                            <input type="checkbox" class="js-switch" data-size="small" checked />
+                        </div>
+                    </li>
+                    <li>
+                        <span>Email Redirect</span>
+                        <div class="switch">
+                            <input type="checkbox" class="js-switch" data-size="small" />
+                        </div>
+                    </li>
+                </ul>
+
+                <label>SYSTEM SETTINGS</label>
+                <ul>
+                    <li>
+                        <span>Notifications</span>
+                        <div class="switch">
+                            <input type="checkbox" class="js-switch" data-size="small" checked />
+                        </div>
+                    </li>
+                    <li>
+                        <span>Auto Updates</span>
+                        <div class="switch">
+                            <input type="checkbox" class="js-switch" data-size="small" checked />
+                        </div>
+                    </li>
+                </ul>
+
+                <label>ACCOUNT SETTINGS</label>
+                <ul>
+                    <li>
+                        <span>Offline</span>
+                        <div class="switch">
+                            <input type="checkbox" class="js-switch" data-size="small" />
+                        </div>
+                    </li>
+                    <li>
+                        <span>Location Permission</span>
+                        <div class="switch">
+                            <input type="checkbox" class="js-switch" data-size="small" checked />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</aside>

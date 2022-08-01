@@ -1,0 +1,141 @@
+<header>
+    <nav class="navbar navbar-default">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="search-icon">
+                <i class="material-icons">search</i>
+            </div>
+            <input type="text" placeholder="Start typing...">
+            <div class="close-search js-close-search">
+                <i class="material-icons">close</i>
+            </div>
+        </div>
+        <!-- #END# Search Bar -->
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="left-toggle-left-sidebar js-left-toggle-left-sidebar">
+                    <i class="material-icons">menu</i>
+                </a>
+                <!-- Logo -->
+                <a class="navbar-brand" href="/panel/api_log" style="padding: 15px 5px">
+                    <img class="logo-minimized" src="/image/icon_polytron_white.png" style="width: 100%;">
+                    <img class="logo" src="/image/Logo Navbar.png" style="width: 100%;">
+                </a>
+                <!-- #END# Logo -->
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- <li>
+                        <a href="javascript:void(0);" class="toggle-left-sidebar js-toggle-left-sidebar">
+                            <i class="material-icons">menu</i>
+                        </a>
+                    </li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <!-- <li>
+                        <a href="javascript:void(0);" class="js-search" data-close="true">
+                            <i class="material-icons">search</i>
+                        </a>
+                    </li> -->
+                    <!-- #END# Call Search -->
+                    <!-- Fullscreen Request -->
+                    <!-- <li>
+                        <a href="javascript:void(0);" class="fullscreen js-fullscreen">
+                            <i class="material-icons">fullscreen</i>
+                        </a>
+                    </li> -->
+                    <!-- #END# Fullscreen Request -->
+                    <!-- #END# Notifications -->
+                    <!-- User Menu -->
+                    <li class="dropdown user-menu" >
+                        <a href="javascript:void(0);" id="dropdownUser" class="dropdown-toggle" data-toggle="dropdown" >
+                            <!-- <img src="assets/images/avatars/face2.jpg" alt="User Avatar" /> -->
+                            <img src="/image/people.svg" alt="User Avatar" style="width: 17px; height: auto;" />
+                            <span class="hidden-xs" ><%- user.username %> </span> <i class="fa fa-chevron-down" style="margin-left: 10px;" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li class="header">
+                                <div class="user">
+                                    <div class="status-user">Status</div>
+                                    <div class="title">
+                                        <% if(user.role === 'admin_hit'){ %>
+                                            Admin HIT
+                                        <%} else if(user.role === 'admin_cikarang'){%>
+                                            Admin Cikarang
+                                        <%} else if(user.role === 'manager'){%>
+                                            Manager
+                                        <%} else {%>
+                                            Administrator
+                                         <%}%>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="body">
+                                <ul>
+                                    <% if(user.username == 'Super Admin'){ %>
+                                    <li>
+                                        <a href="/auth/change_password_admin">
+                                            <i class="material-icons">lock_open</i> Change Password
+                                        </a>
+                                    </li>
+                                    <%}%>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <div style="justify-content: center; align-items: center; display: flex;">
+                                    <a href="/panel/auth/logout" id="logout_button" style="display: none;">Log Out</a>
+                                    <button class="btn-logout" onclick="log_out(event)">Log Out</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+	$("#dropdownUser").click(function(){
+			// $("#dropdownMenu").slideToggle();
+			$(this).find('i').toggleClass('fa-chevron-up');
+	});
+
+
+    function log_out(e){
+        console.log("masuk log out")
+        swalWithBootstrapButtons.fire({
+            customClass : {
+                confirmButton: 'btn btn-confirm-popup',
+                cancelButton: 'btn btn-cancel',
+                // title : 'title-popup',
+            },
+            title: 'Are you sure <br> you want to log out?',
+            // text: "Current data will be discard!",
+            icon: 'warning',
+            showCancelButton: true,
+            allowOutsideClick: false,
+            confirmButtonText: 'Logout',
+            cancelButtonText: 'Cancel',
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("logout_button").click();
+                    swal.fire({
+                        icon : success,
+                        title : 'Logout',
+                        timer : 1000
+                    })
+
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swal.fire({
+                            title: 'Cancelled'
+
+                        })
+                    }
+            })
+    }
+</script>

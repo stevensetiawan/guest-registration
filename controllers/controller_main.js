@@ -3,11 +3,12 @@ const c_auth = require('./controller_auth')
 
 router.get('/', async function(req, res){
     if (req.isAuthenticated()) {
-        res.redirect('./panel/home')
+        res.redirect('./home')
     } else {
-            res.redirect('/panel/auth/login')
+        res.redirect('./auth')
     }
 })
+console.log("Sampe sini")
 
 router.use("/auth", c_auth)
 

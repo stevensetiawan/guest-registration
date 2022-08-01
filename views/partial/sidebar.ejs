@@ -1,0 +1,94 @@
+<aside class="sidebar" style="max-width: 100%;">
+    <nav class="sidebar-nav">
+        <ul class="metismenu">
+            <!-- <li class="title">
+                Section Label 1
+            </li>
+            <li class="<%if(title == 'Example View' || title == 'Example View 2'){%> active <% } %>">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">dashboard</i>
+                    <span class="nav-label">Expanded Menu</span>
+                </a>
+                <ul>
+                    <li class="<%if(title == 'Example View'){%> active <% } %>">
+                        <a href="index-2.html">Dashboard v1</a>
+                    </li>
+                    <li>
+                        <a href="pages/dashboard/dashboard-2.html">Dashboard v2</a>
+                    </li>
+                </ul>
+            </li> -->
+            <% if(user.role === 'Admin' || user.role === 'manager'){ %>
+            <li class="title">
+                ADMIN MENU
+            </li>
+            <li class="<%if(title == 'Admin Management'){%> active <% } %>">
+                <a href="/panel/user_admin">
+                    <img src="/image/icon admin user.svg" alt="" style="width: 20px; height: auto;">
+                    <span class="nav-label">Admin Management</span>
+                </a>
+            </li>
+            <li class="title">
+                Main Menu
+            </li>
+            <li class="<%if(title == 'Warehouse'){%> active <% } %>">
+                <a href="/panel/warehouse">
+                    <img src="/image/icon warehouse.svg" alt="" style="width: 20px; height: auto;">
+                    <span class="nav-label">Warehouse Management</span>
+                </a>
+            </li>
+            <li class="<%if(title == 'Supplier'){%> active <% } %>">
+                <a href="/panel/supplier">
+                    <img src="/image/icon supplier.svg" alt="" style="width: 20px; height: auto;" >
+                    <span class="nav-label">Supplier Management</span>
+                </a>
+            </li>
+            <%}%>
+            <!-- <li class="title">
+                USER MENU
+            </li>
+            <li class="<%if(title == 'Dashboard'){%> active <% } %>">
+                <a href="/panel/dashboard">
+                    <i class="material-icons">dashboard</i>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+            </li> -->
+
+            <% if(user.role === 'Admin'){ %>
+            <li class="title">
+                Logs & Documentation
+            </li>
+            <li class="<%if(title == 'Logs'){%> active <% } %>">
+                <a href="/panel/api_log">
+                    <i class="material-icons">insert_drive_file</i>
+                    <span class="nav-label">Logs</span>
+                </a>
+            </li>
+            <li class="<%if(title == 'Api Documentation'){%> active <% } %>">
+                <a href="/docs/">
+                    <i class="material-icons">import_contacts</i>
+                    <span class="nav-label">API Documentation</span>
+                </a>
+            </li>
+            <%}%>
+
+            <% if(user.role !== 'Admin'){ %>
+            <li class="<%if(title == 'Tracker'){%> active <% } %>" style=" margin-top: 20px;">
+                <a href="/panel/tracker">
+                    <img src="/image/Icon tracker.svg" alt="" style="width: 18px; height: auto;">
+                    <span class="nav-label">Tracker</span>
+                </a>
+            </li>
+            <% }%>
+
+            <% if(user.role !== 'Admin' && user.role !== 'manager'){ %>
+            <li class="<%if(title == 'Receiver'){%> active <% } %>">
+                <a href="/panel/receiver">
+                    <img src="/image/Icon receiver.svg" alt="" style="width: 20px; height: auto;">
+                    <span class="nav-label"> Receiver Management</span>
+                </a>
+            </li>
+            <% }%>
+        </ul>
+    </nav>
+</aside>

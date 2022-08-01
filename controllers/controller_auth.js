@@ -3,9 +3,10 @@ const api_response = require('../module/api_response')
 const passport = require('passport')
 
 router.get('/', async function(req, res){
+    console.log("masuk ga")
         let error = req.session.error
         req.session.error = ""
-        res.render("./panel/auth/login", {
+        res.render("./login", {
             title: "Login",
             error: error
         })
