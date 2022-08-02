@@ -67,7 +67,7 @@
                 }).done(function (res) {
                     // handle this
                     if (res.error_code == "200") {
-                        window.location.href = "/panel/tracker/"
+                        window.location.href = "/guest/"
                     } else {
                         console.log(res.message)
                         $("#error-message").show()

@@ -1,14 +1,4 @@
-/* import libraries */
-const { Pool } = require("pg");
-
-/* initialize pool */
-const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DATABASE,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS
-})
+const mysql = require('../module/mysql_connector')
 
 module.exports = {
     list: async function (data) {

@@ -1,0 +1,91 @@
+<div class="modal fade" id="modal_panel_user_update" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content modal-management" style="display: none;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 35px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="management-title" id="exampleModalLabel">Update Panel User</h5>
+            </div>
+            <div class="modal-body">
+                <form id="panel_user_form_update">
+                    <input id="panel_user_id" name="panel_user_id" type="hidden" class="form-control">
+                    <div class="form-group">
+                            <div class="search_nik">
+                                <!-- <span class="input-group-addon">NIK</span> -->
+                              <input type="number" class="update-input" placeholder="Nomor Induk Karyawan" id="panel_user_nik" name="panel_user_nik" readonly>
+                                <!-- <div class="input-group-btn">
+                                    <button class="btn btn-search" id="get_user_data_update" type="button" style="margin-left: 25px;">Search</button>
+                                </div> -->
+                            </div>
+                          <div id="employee-info-container" style="display: none;">
+                            <input id="panel_user_name" name="panel_user_name" type="text" class="form-control hidden" hidden>
+                            <h3>Informasi Karyawan</h3>
+                                <div  class="row admin-row">
+                                    <div  style="margin-right: 120px;">
+                                        <div class="admin-label">
+                                            NIK
+                                        </div>
+                                        <div class="admin-label">
+                                            Name
+                                        </div>
+                                        <div class="admin-label">
+                                            Email
+                                        </div>
+                                        <div class="admin-label">
+                                            Job Desc
+                                        </div>
+                                        <div class="admin-label">
+                                            Job Title
+                                        </div>
+                                        <div class="admin-label">
+                                            Personal Sub Area
+                                        </div>
+                                        <div class="admin-label">
+                                            Company
+                                        </div>
+                                        <div class="admin-label">
+                                            Department
+                                        </div>
+                                        <div class="admin-label">
+                                            Role
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="admin-label" id="panel_user_nik_data">
+                                        </div>
+                                        <div class="admin-label" id="panel_user_name_data">
+                                        </div>
+                                        <div class="admin-label" id="panel_user_email_data">
+                                        </div>
+                                        <div class="admin-label" id="panel_user_ou_desc_data">
+                                        </div>
+                                        <div class="admin-label" id="panel_user_job_title_desc_data">
+                                        </div>
+                                        <div class="admin-label" id="panel_user_personal_sub_area_data">
+                                        </div>
+                                        <div class="admin-label" id="panel_user_company_data" >
+                                        </div>
+                                        <div class="admin-label" id="panel_user_department_data">
+                                        </div>
+                                        <div class="admin-label">
+                                            <select class="form-control" id="panel_user_role" name="panel_user_role">
+                                                <option value="">Please Select The Role First!</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="admin_hit">Admin HIT</option>
+                                                <option value="admin_cikarang">Admin Cikarang</option>
+                                                <option value="manager">Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            <div style="padding-left:45px;padding-bottom: 30px;">
+                <button type="button" id="update_panel_user" class="btn btn-primary" style="display: none;">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

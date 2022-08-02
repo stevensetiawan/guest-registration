@@ -1,0 +1,70 @@
+<%- include('../../partial/css.ejs') %>
+<div class="modal fade" id="modal_panel_receiver_add" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" id="pop-up-receiver" role="document">
+        <!-- mulai dari modal content sini pop upnya -->
+        <div class="modal-content add-user">
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 28px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title add-title" id="exampleModalLabel">Add New User</h5>
+            </div>
+            <div class="modal-body" style="margin-top: -7%">
+                <form id="panel_receiver_form_add">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <div class="form-add-label">
+                                Name
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder=""
+                                    id="panel_receiver_name" name="panel_receiver_name">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Email (For send OTP!)
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <input type="email" class="form-control" placeholder=""
+                                    id="panel_receiver_email" name="panel_receiver_email">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Phone
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <input type="tel" class="form-control" placeholder=""
+                                    id="panel_receiver_phone" name="panel_receiver_phone">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Warehouse
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <select class="chosen-select" name="warehouse_option"
+                                    id="warehouse_option">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Address
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder=""
+                                    id="panel_receiver_address" name="panel_receiver_address">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <button type="submit" id="save_panel_receiver" class="btn btn-primary btn-save">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

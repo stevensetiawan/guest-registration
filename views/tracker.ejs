@@ -1,0 +1,746 @@
+<%- include('./partial/header') %>
+
+<body id="body" hidden>
+    <%- include('./modal/panel_tracker/barang_masuk') %>
+    <%- include('./modal/panel_tracker/update') %>
+        <!-- #END# Top Bar -->
+        <%- include('./partial/navbar') %>
+        <!-- Left Menu -->
+        <%- include('./partial/sidebar') %>
+        <!-- #END# Left Menu -->
+        <section class="content dashboard">
+            <!-- Dashboard Heading -->
+            <div class="dashboard-heading">
+                <div class="row clearfix p-l-40">
+                    <h1 >
+                        Guest
+                    </h1>
+                    <hr width="75px">
+                </div>
+            </div>
+            <!-- #END# Dashboard Heading -->
+            <div class="page-body" >
+                <div class="panel panel-default">
+                    <!-- <div class="panel-heading">
+                        Tracker
+                    </div> -->
+                    <div class="panel-body" style="padding-top: 0;">
+                        <div class="table-responsive">
+                            <table id="dataTable" width="100%" cellspacing="0">
+                        </div>
+                        <div class="table-class">
+                            <table id="data_table_tracker" class="table-barang">
+                                <thead>
+                                    <tr>
+                                        <th class="ship-code" data-orderable="false">SHIP CODE</th>
+                                        <th data-orderable="false">WEIGHT</th>
+                                        <th data-orderable="false">STATUS</th>
+                                        <th data-orderable="false">ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- <iframe id="dni" name="dni" scrolling="yes" style="display:none"></iframe> -->
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <!-- #END# Footer -->
+    </div>
+    <%- include('./partial/footer') %>
+
+    <%- include('./partial/javascript') %>
+
+</body>
+<script>
+    let user_role = "<%- user.role %>";
+    let user_id = "<%- user.id %>";
+    let user_name = "<%- user.username%>";
+    console.log(user_id)
+    console.log(user_name)
+
+    if (user_role !== 'manager') {
+        $("#tombol_add_barang_masuk").show()
+    }
+
+    function posting(data) {
+        $.ajax({
+            method: "POST",
+            url: data.url,
+            data: data.param
+        }).done(data.done);
+    }
+
+    function postingWithFile(data) {
+        $.ajax({
+            method: "POST",
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false,
+            url: data.url,
+            data: data.param
+        }).done(data.done);
+    }
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-confirm-popup',
+            cancelButton: 'btn btn-cancel',
+            title : 'title-popup',
+            popup : 'popup-tracker'
+        },
+        buttonsStyling: false
+    })
+
+    function submit(e) {
+        console.log("masuk submit")
+        e.preventDefault()
+        swalWithBootstrapButtons.fire({
+            title: `Are you sure want to submit this ship code?`,
+            text: "This data will be saved!",
+            icon: 'warning',
+            showCancelButton: true,
+            allowOutsideClick: false,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Processing the data!',
+                    // html: 'Will finish in <b></b> milliseconds.',
+                    // timer: 6000,
+                    allowOutsideClick: false,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        var url = "/panel/tracker/add"
+                        posting({
+                            url: url,
+                            param: $("#panel_tracker_form_add").serialize(),
+                            done: function (data) {
+                                console.log(data)
+                                if (data.status == "SUCCESS") {
+                                    // alert(data.status)
+                                    // location.reload(true)
+                                    // window.close(`/panel/tracker/detail/${data.id_ship_code}/dni_print`)
+                                    if (user_role === 'admin_hit') {
+                                        window.open(`/panel/tracker/detail/${data.id_ship_code}/dni_print`)
+                                        setTimeout(function(){
+                                            window.location.href =
+                                            `/panel/tracker/detail/${data.id_ship_code}?print=true&tab=arriving`
+                                        }, 1000);
+                                        // window.location.href = `/panel/tracker/detail/${data.id_ship_code}?print=true&tab=arriving`
+                                    } else if (user_role === 'admin_cikarang') {
+                                        window.location.href =
+                                        `/panel/tracker/detail/${data.id_ship_code}`
+                                    }
+                                    resetModal()
+                                    // $("#dni").attr('src', `/panel/tracker/detail/${data.id_ship_code}/dni_print`)
+                                    // window.frames["dni"].focus();
+                                    // window.frames["dni"].print();
+                                } else {
+                                    // alert(data.status + ", " + data.message)
+                                    console.log(data.status + ", " + data.message)
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: data.message,
+                                        text: `Please input correctly`,
+                                        customClass: {
+                                            popup : 'popup-tracker'
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                    },
+                    willClose: () => {
+                        // clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    // if (result.dismiss === Swal.DismissReason.timer) {
+                    // 	console.log('I was closed by the timer')
+                    // }
+                })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled!',
+
+                )
+            }
+        })
+    }
+
+    function update(e) {
+        console.log("masuk update")
+        e.preventDefault()
+        swalWithBootstrapButtons.fire({
+            title: `Are you sure want to update this ship code?`,
+            text: "This data will be updated!",
+            icon: 'warning',
+            showCancelButton: true,
+            allowOutsideClick: false,
+            confirmButtonText: 'Yes, update it!',
+            cancelButtonText: 'Cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Processing the data!',
+                    // html: 'Will finish in <b></b> milliseconds.',
+                    // timer: 6000,
+                    allowOutsideClick: false,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        var url = "/panel/tracker/update"
+                        posting({
+                            url: url,
+                            param: $("#panel_ship_code_status_form_update").serialize(),
+                            done: function (data) {
+                                console.log(data)
+                                if (data.status == "SUCCESS") {
+                                    // alert(data.status)
+                                    // location.reload(true)
+                                    // window.open(`/panel/tracker/detail/${data.id_ship_code}/dni_print`)
+                                    // window.close(`/panel/tracker/detail/${data.id_ship_code}/dni_print`)
+                                    resetModal()
+
+                                    window.location.href =
+                                        `/panel/tracker/`
+                                    // $("#dni").attr('src', `/panel/tracker/detail/${data.id_ship_code}/dni_print`)
+                                    // window.frames["dni"].focus();
+                                    // window.frames["dni"].print();
+                                } else {
+                                    // alert(data.status + ", " + data.message)
+                                    console.log(data.status + ", " + data.message)
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: data.message,
+                                        text: `Please input correctly`,
+                                        customClass: {
+                                            popup : 'popup-tracker'
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                    },
+                    willClose: () => {
+                        // clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    // if (result.dismiss === Swal.DismissReason.timer) {
+                    // 	console.log('I was closed by the timer')
+                    // }
+                })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled!',
+
+                )
+            }
+        })
+    }
+
+    function edit_status(e, status, ship_code, id) {
+        e.preventDefault()
+        console.log("masuk sini nh")
+        console.log(status)
+        console.log(ship_code)
+        console.log(id)
+        $(`#modal_panel_tracker_status_update select option[value=${status}]`).prop("selected", "selected");
+        $(`#modal_panel_tracker_status_update #panel_ship_code_id_update`).val(id);
+        $(`#modal_panel_tracker_status_update #panel_ship_code_update`).val(ship_code);
+    }
+    //Functions
+    function deleteData(id) {
+        posting({
+            url: "/panel/user_admin/get",
+            param: {
+                id: id
+            },
+            done: function (res) {
+                console.log(res.data[0].id)
+                $("#panel_user_id_delete").val(res.data[0].id);
+                $("#panel_user_delete_message").html(res.data[0].name);
+                $("#modal_panel_user_delete").modal("show")
+            }
+        })
+    }
+
+    function uploadPDF(e) {
+        e.preventDefault()
+        $('#input_pdf').trigger('click')
+        console.log($("#input_pdf").val())
+    }
+
+    function submitPDF(e) {
+        e.preventDefault()
+        let myFormData = new FormData();
+        myFormData.append('pictureFile', input_pdf.files[0]);
+
+        $.ajax({
+            url: 'upload.php',
+            type: 'POST',
+            processData: false, // important
+            contentType: false, // important
+            dataType: 'json',
+            data: myFormData
+        })
+    }
+
+    $("#warehouse").select2({
+        // minimumInputLength: 2,
+        multiple: false,
+        width: 305,
+        placeholder: "Please select the warehouse",
+        allowClear: true
+    })
+
+    // function getWarehouse(e) {
+    //     e.preventDefault()
+    //     console.log("kepanggil get receiver")
+    //     $.ajax({
+    //         method: "POST",
+    //         url: "/panel/tracker/get-supplier",
+    //         success: function (response) {
+    //             // console.log("masuk ini response", response)
+    //             $("#supplier_option").append(
+    //                 '<option></option>'
+    //             );
+    //             let option = response.data.map(x =>
+    //                 `<option value=${x.id}>${x.vendor_name}</option>`);
+    //             $("#supplier_option").append(option
+    //                 .join(' '));
+    //             // $("#panel_tracker_ship_code_keluar").val(ship_code);
+    //             // $("#panel_tracker_id_ship_code_keluar").val(id_ship_code);
+    //             // if(response.user.role === "admin_cikarang"){
+    //             //     $("#panel_tracker_receiver option:selected").val(response.user.id);
+    //             // }
+    //         }
+    //     })
+    //     $.ajax({
+    //         method: "POST",
+    //         url: "/panel/receiver/get-warehouse",
+    //         success: function (response) {
+    //             console.log("masuk ini response", response)
+    //             $("#warehouse").append(
+    //                 '<option></option>'
+    //             );
+    //             let option = response.data.map(x =>
+    //                 `<option value='{"id":${x.id}, "warehouse_code":"${x.warehouse_code}"}'>${x.warehouse}</option>`
+    //             );
+    //             $("#warehouse").append(option
+    //                 .join(' '));
+    //             // $("#panel_tracker_ship_code_keluar").val(ship_code);
+    //             // $("#panel_tracker_id_ship_code_keluar").val(id_ship_code);
+    //             // if(response.user.role === "admin_cikarang"){
+    //             //     $("#panel_tracker_receiver option:selected").val(response.user.id);
+    //             // }
+    //         }
+    //     })
+    //     if (user_role === 'admin_cikarang') {
+    //         $("#panel_tracker_receiver").html(
+    //             `<option value=${user_id} selected>${user_name}</option>`)
+    //         $("#panel_tracker_receiver").prop("disabled", false);
+    //     }
+    // }
+
+    function getReceiverKeluar(e, ship_code, id_ship_code) {
+        e.preventDefault()
+        console.log(ship_code, "ini ship code di get receiver keluar")
+        console.log(id_ship_code, "ini id di get receiver keluar")
+        console.log("kepanggil get receiver keluar")
+        window.location.href = `/panel/tracker/add-barang-keluar/${id_ship_code}`
+    }
+
+    function openUpdate(id) {
+        posting({
+            url: "/panel/tracker/get",
+            param: {
+                id: id
+            },
+            done: function (res) {
+                $("#panel_user_id_update").val(res.data[0].id)
+                $("#panel_user_nik_update").val(res.data[0].username)
+                $("#panel_user_name_update").val(res.data[0].name)
+                $("#panel_user_role_update").val(res.data[0].role)
+                $("#modal_panel_user_update").modal("show")
+            }
+        })
+    }
+
+    function toDetail(ship_code) {
+        console.log("go to detail")
+        window.location = "/panel/tracker/detail/" + ship_code
+    }
+
+    // Form reset function
+    function resetModal() {
+        $("#employee-info-container").addClass("hidden")
+        $("#save_panel_user").addClass("hidden")
+        $('input').val('');
+        $('textarea').val('');
+        $("#warehouse_option").empty()
+        $("#warehouse").empty()
+        $("#supplier_option").empty()
+        if (user_role === 'admin_hit') {
+            $("#panel_tracker_receiver").empty().prop("disabled", true);
+        }
+        $("#table_form tbody").find("tr:gt(0)").remove();
+    }
+
+    if (user_role === 'admin_hit') {
+        $("#warehouse").change(function () {
+            console.log($("#warehouse option:selected").val())
+            if ($("#warehouse option:selected").val() !== '') {
+                $("#panel_tracker_receiver").empty()
+                $("#panel_tracker_receiver").prop("disabled", false);
+                $("#panel_tracker_address").val('')
+                $.ajax({
+                    method: "POST",
+                    url: "/panel/tracker/get-receiver",
+                    data: {
+                        warehouse: JSON.parse($("#warehouse option:selected").val())
+                    },
+                    success: function (response) {
+                        console.log(response, "ini response")
+                        $("#panel_tracker_receiver").append(
+                            '<option></option>'
+                        );
+                        let option = response.data.map(x =>
+                            `<option value=${x.id}>${x.name}</option>`);
+                        $("#panel_tracker_receiver").append(option
+                            .join(' '));
+                    }
+                })
+            } else {
+                $("#panel_tracker_receiver").empty().prop("disabled", true);
+                $("#panel_tracker_address").val('')
+            }
+            // var $x = $("#warehouse_option");
+            // $x.prop("value", "");
+        })
+    }
+    if (user_role === 'admin_hit') {
+        $("#panel_tracker_receiver").select2({
+            // minimumInputLength: 2,
+            multiple: false,
+            width: 305,
+            placeholder: "Please select the warehouse first",
+            allowClear: true
+        })
+    } else {
+        $("#panel_tracker_receiver").select2({
+            // minimumInputLength: 2,
+            multiple: false,
+            width: 305,
+            placeholder: "Please select the warehouse first",
+        })
+    }
+
+
+    $("#panel_tracker_receiver").change(function () {
+        console.log($("#panel_tracker_receiver option:selected").val())
+        $("#panel_tracker_address").val('')
+        if ($("#panel_tracker_receiver option:selected").val() !== '' || $(
+                "#panel_tracker_receiver option:selected").val() !== undefined) {
+            $.ajax({
+                method: "POST",
+                url: "/panel/tracker/get-location",
+                data: {
+                    id: $("#panel_tracker_receiver option:selected").val()
+                },
+                success: function (response) {
+                    console.log(response, "ini response")
+                    $("#panel_tracker_address").val(response.data[0].address)
+                }
+            })
+        }
+        // var $x = $("#panel_tracker_receiver");
+        // $x.prop("value", "");
+    })
+
+
+
+    $("#supplier_option").select2({
+        // minimumInputLength: 2,
+        multiple: false,
+        width: 305,
+        placeholder: "Please select the supplier",
+        allowClear: true
+    })
+
+    $("#add_row").click(function () {
+        console.log("masuk add row function")
+        $("#table_form tbody").append(
+            `<tr>
+                <td>
+                    <input type="text" class="form-control" placeholder="" name="panel_tracker_delivery_note">
+                </td>
+                <td>
+                    <input type="text" class="form-control" placeholder="" id="panel_tracker_police_no" name="panel_tracker_police_no">
+                </td>
+                <td>
+                    <input type="text" class="form-control" placeholder="" id="panel_tracker_driver" name="panel_tracker_driver">
+                </td>
+                <td>
+                    <input type="text" class="form-control" placeholder="" id="panel_tracker_total_colly" name="panel_tracker_total_colly">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-barang" id="remove_row" name="remove_row" style="padding: 9px 12px;"><i class="fas fa-minus"></i></button>
+                </td>
+            </tr>`
+        )
+    })
+
+    function barangKeluar(id) {
+        window.location.href = "/panel/tracker/barang-keluar"
+    }
+
+    $("#table_form tbody").on('click', '.btn', function () {
+        $(this).closest('tr').remove()
+        // $(this).parent().parent('tr').remove();
+    })
+
+
+    //Ready Functions
+    $(document).ready(function () {
+        $("#body").show();
+        console.log(user_role, "ini user")
+        //Initialize Datatables
+        console.log("masuk document ready data table tracker")
+
+
+        //untuk validate data toggle & data target
+        $('#data_table_tracker').on('init.dt', function() {
+            $('.btn-masuk')
+                .attr('data-toggle', 'modal')
+                .attr('data-target', '#modal_panel_tracker_barang_masuk')
+                .attr('data-backdrop', 'static');
+        });
+
+        var table = $('#data_table_tracker').DataTable({
+            initComplete: function () {
+                this.api().columns([2]).every(function () {
+                    var column = this;
+                    var select = $('#selectjobtitle')
+
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d +
+                            '</option>')
+                    });
+                })
+                if (user_role === "admin_hit") {
+                    this.api().columns(3).visible(false)
+                }
+            },
+            // ini untuk edit col dari filter, search , button dan pagination
+            "dom": "<'row'<'col-sm-2'l><'col-sm-3'f><'col-sm-7'B>>" +
+			"<'row'<'col-sm-12'tr>>" +
+			"<'row'<'col-sm-12'p>>",
+            buttons: [{
+                "text" : '<i class="fas fa-plus"></i> Barang masuk',
+                    "className": 'btn btn-primary btn-masuk',
+                    action :  function getWarehouse(e) {
+                    e.preventDefault()
+                    console.log("kepanggil get receiver")
+                    $.ajax({
+                        method: "POST",
+                        url: "/panel/tracker/get-supplier",
+                        success: function (response) {
+                            // console.log("masuk ini response", response)
+                            $("#supplier_option").append(
+                                '<option></option>'
+                            );
+                            let option = response.data.map(x =>
+                                `<option value=${x.id}>${x.vendor_name}</option>`);
+                            $("#supplier_option").append(option
+                                .join(' '));
+                            // $("#panel_tracker_ship_code_keluar").val(ship_code);
+                            // $("#panel_tracker_id_ship_code_keluar").val(id_ship_code);
+                            // if(response.user.role === "admin_cikarang"){
+                            //     $("#panel_tracker_receiver option:selected").val(response.user.id);
+                            // }
+                        }
+                    })
+                    $.ajax({
+                        method: "POST",
+                        url: "/panel/receiver/get-warehouse",
+                        success: function (response) {
+                            console.log("masuk ini response", response)
+                            $("#warehouse").append(
+                                '<option></option>'
+                            );
+                            let option = response.data.map(x =>
+                                `<option value='{"id":${x.id}, "warehouse_code":"${x.warehouse_code}"}'>${x.warehouse}</option>`
+                            );
+                            $("#warehouse").append(option
+                                .join(' '));
+                            // $("#panel_tracker_ship_code_keluar").val(ship_code);
+                            // $("#panel_tracker_id_ship_code_keluar").val(id_ship_code);
+                            // if(response.user.role === "admin_cikarang"){
+                            //     $("#panel_tracker_receiver option:selected").val(response.user.id);
+                            // }
+                        }
+                    })
+                    if (user_role === 'admin_cikarang') {
+                        $("#panel_tracker_receiver").html(
+                            `<option value=${user_id} selected>${user_name}</option>`)
+                        $("#panel_tracker_receiver").prop("disabled", false);
+                    }
+                }
+
+            }],
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "/panel/tracker/list",
+                "method": "POST"
+            },
+            "columns": [{
+                    data: "ship_code",
+                    render: function (data, type, full, row) {
+                        if (data && data != "") {
+                            if (full.is_cikarang === 1) {
+                                return "<a onclick='toDetail(\"" + full.id +
+                                    "\")' style='display:block; cursor:pointer; color: darkorange;'>" +
+                                    data +
+                                    "</a>"
+                            } else {
+                                return "<a onclick='toDetail(\"" + full.id +
+                                    "\")' style='display:block; cursor:pointer;'>" +
+                                    data +
+                                    "</a>"
+                            }
+                        } else {
+                            return "<i class='not-set'>Not set</i>"
+                        }
+                    }
+                },
+                {
+                    data: "weight",
+                    searchable: false,
+                    render: function (data, type, row) {
+                        if (data && data != "") return data + " Kg";
+                        else return "<i class='not-set'>Not set</i>"
+                    }
+                },
+                {
+                    data: "status",
+                    render: function (data, type, full, row) {
+                        if (data && data != "") {
+                            if(data === 'arriving'){
+                                return `<div ><img src="/image/arriving icon.svg" alt="arriving"> Arriving</div>`
+                            } else if(data === 'transit'){
+                                return `<div><img src="/image/warehouse.svg" alt="transit"> Transit</div>`
+                            } else if(data === 'ready_to_ship'){
+                                return `<div ><img src="/image/ready to ship.svg" alt="ready to ship"> Ready to Ship</div>`
+                            } else if(data === 'ship'){
+                                return `<div><img src="/image/ship.svg" alt="ship"> Ship</div>`
+                            } else if(data === 'delivered'){
+                                return `<div><img src="/image/delivered.svg" alt="delivered"> Delivered</div>`
+                            }
+                        } else {
+                            return "<i class='not-set'>Not set</i>"
+                        }
+                    }
+                },
+                {
+                    orderable: false,
+                    searchable: false,
+                    data: "id",
+                    render: function (data, type, full, row) {
+                        if (full.status === 'transit' && user_role ===
+                            'admin_cikarang') {
+                            return `<button class='btn' id='add_barang_keluar' data-toggle='modal' data-target='#modal_panel_tracker_barang_keluar' onclick='getReceiverKeluar(event,"${full.ship_code}","${full.id}")'><i class='fa fa-arrow-right'></i> Barang Keluar</button>`
+                        } else if (user_role === 'manager') {
+                            return `<button alt='edit' class='btn-edit' id="pencil_edit" onclick = 'edit_status(event, "${full.status}", "${full.ship_code}", "${full.id}")' style ='text-align:center; cursor:pointer; display: block;' data-toggle="modal"
+                                    data-target="#modal_panel_tracker_status_update" > <img src='/image/edit.svg'> Edit
+                                </button>`
+                        } else {
+                            return ""
+                        }
+                    }
+                }
+            ],
+            "order": [
+                [1, "desc"]
+            ],
+            pagingType: "full_numbers",
+            //mau ganti button di pagination
+            language: {
+                "lengthMenu": "_MENU_",
+                // search box
+                searchPlaceholder: 'Search',
+                search: "",
+                //pagination
+                'paginate': {
+                    'previous': '<',
+                    'next': '>'
+                }
+            },
+            "lengthMenu": [[6, 10, 25, 50, 100], [6, 10, 25, 50, 100]]
+        })
+
+        addExtraButtons();
+        $('#data_table_tracker').on("draw.dt", function(e) {
+            addExtraButtons();
+        })
+
+    // untuk pagination
+    function addExtraButtons() {
+        $(".dataTables_paginate .first").after("<li><a class='paginate_button quick_previous'><<</a></li>")
+        $(".dataTables_paginate .last").before("<li><a class='paginate_button quick_next'>>></a></li>")
+        var currentPage = table.page.info();
+        if (currentPage.pages - 1 == currentPage.page) {
+            $(".quick_next").addClass("disable-page")
+        } else if (currentPage.page == 0) {
+            $(".quick_previous").addClass("disable-page")
+        }
+
+        $(".quick_next").on("click", quickNext)
+        $(".quick_previous").on("click", quickPrevious)
+
+        function quickNext(e) {
+
+            var pageToGoTo = (currentPage.page + 2) >= currentPage.pages ? currentPage.pages - 1 : (currentPage.page + 2);
+            table.page(pageToGoTo).draw(false);
+        }
+
+        function quickPrevious(e) {
+
+            var pageToGoTo = (currentPage.page - 2) <= 0 ? 0 : (currentPage.page - 2);
+            table.page(pageToGoTo).draw(false);
+        }
+    }
+
+    // If modal close reset everything
+    $("#modal_panel_tracker_barang_masuk").on("hidden.bs.modal", function () {
+        resetModal();
+    });
+    $("#modal_panel_tracker_barang_keluar").on("hidden.bs.modal", function () {
+        resetModal();
+    });
+
+    if (user_role === 'admin_cikarang') {
+        $("#warehouse_package").hide()
+        $("#address_package").hide()
+    }
+});
+</script>
+
+</html>

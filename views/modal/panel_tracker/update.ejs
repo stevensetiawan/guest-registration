@@ -1,0 +1,155 @@
+<div class="modal fade" id="modal_panel_tracker_status_update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-management">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 28px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="management-title" id="exampleModalLabel">Edit Status Tracker</h5>
+            </div>
+            <div class="modal-body">
+                <form id="panel_ship_code_status_form_update">
+                    <input id="panel_ship_code_id_update" name="panel_ship_code_id_update" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <label for="ship_code">Ship Code</label>
+                        <input id="panel_ship_code_update" name="panel_ship_code_update" type="text" class="form-control" readOnly>
+                    </div>
+                    <div class="admin-label">
+                        <span class="input-group-text">Status</span>
+                        <select class="form-control" id="panel_status_update" name="panel_status_tracker">
+                            <option value="arriving">Arriving</option>
+                            <option value="transit">Transit</option>
+                            <option value="ready_to_ship">Ready to Ship</option>
+                            <option value="ship">Ship</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div style="padding-left:45px;padding-bottom: 30px;">
+                <button type="button" id="update_panel_status" onclick = 'update(event)' class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="modal_panel_tracker_barang_masuk" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Barang Masuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="panel_tracker_form_add">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="panel_tracker_id" name="panel_tracker_id">
+                        <div class="row row-style">
+                            <div class="col-lg-4">
+                                Ship code
+                            </div>
+                            <div class="col-lg-8" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder="Please input the ship code"
+                                    id="panel_tracker_ship_code" name="panel_tracker_ship_code">
+                            </div>
+                        </div>
+                        <div class="row row-style">
+                            <div class="col-lg-4">
+                                Weight (Kg)
+                            </div>
+                            <div class="col-lg-8" id="panel_user_department_data">
+                                <input type="number" class="form-control" placeholder="Please input the weight"
+                                    id="panel_tracker_weight" name="panel_tracker_weight">
+                            </div>
+                        </div>
+                        <div class="row row-style">
+                            <div class="col-lg-4">
+                                Note
+                            </div>
+                            <div class="col-lg-8" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder="Please input the note"
+                                    id="panel_tracker_note" name="panel_tracker_note">
+                            </div>
+                        </div>
+                        <div class="row row-style">
+                            <div class="col-lg-4">
+                                Receiver
+                            </div>
+                            <div class="col-lg-8" id="panel_user_department_data">
+                                <select class="form-control" id="panel_tracker_receiver" name="panel_tracker_receiver">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row row-style">
+                            <div class="col-lg-4">
+                                Warehouse
+                            </div>
+                            <div class="col-lg-8" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder="Please select the receiver first"
+                                    id="panel_tracker_warehouse" name="panel_tracker_warehouse" readonly>
+                            </div>
+                        </div>
+                        <div class="row row-style">
+                            <div class="col-lg-4">
+                                <address>Address</address>
+                            </div>
+                            <div class="col-lg-8" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder="Please select the receiver first"
+                                    id="panel_tracker_address" name="panel_tracker_address" readonly>
+                            </div>
+                        </div>
+                        <div class="table-class">
+                            <table id="table_form" class="table table-bordered" style="width:100%">
+                                <button type="button" class="btn btn-primary" id="add_row"><i
+                                        class="fas fa-plus"></i></button>
+                                <thead>
+                                    <tr>
+                                        <th>Surat Jalan</th>
+                                        <th>Police No.</th>
+                                        <th>Driver</th>
+                                        <th>Total Colly</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                placeholder="Please input delivery note" id="panel_tracker_location"
+                                                name="panel_tracker_delivery_note">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                placeholder="Please input delivery note" id="panel_tracker_location"
+                                                name="panel_tracker_police_no">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                placeholder="Please input delivery note" id="panel_tracker_location"
+                                                name="panel_tracker_driver">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                placeholder="Please input delivery note" id="panel_tracker_location"
+                                                name="panel_tracker_total_colly">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" id="remove_row" name="remove_row"><i class="fas fa-minus"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="save_panel_tracker" onclick="submit(event)" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div> -->

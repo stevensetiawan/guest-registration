@@ -1,0 +1,26 @@
+<div class="modal fade" id="modal_logs_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-management">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 35px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Procced to Delete Selected Logs?</h5>
+            </div>
+            <div class="modal-body">
+                <form id="logs_form_delete">
+                    <p>Are you sure to delete this file <span style="color: red;" id="file_name_message"> </span> ? </p>
+                    <input type="hidden" name="logs_type_delete" id="logs_type_delete" value="">
+                    <input type="hidden" name="logs_filename_delete" id="logs_filename_delete" value="">
+                    <input type="hidden" name="logs_filedate_delete" id="logs_filedate_delete" value="">
+                    <input type="hidden" name="file_name_message" id="file_name_message" value="">
+                </form>
+
+            </div>
+            <div style="padding-left:45px;padding-bottom: 30px;">
+                <!-- <button type="button" class="btn" data-dismiss="modal">Close</button> -->
+                <button type="button" id="delete_logs" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

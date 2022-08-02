@@ -1,0 +1,37 @@
+<div class="modal fade" id="modal_panel_supplier_update" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content  modal-management">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right: 28px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="management-title" id="exampleModalLabel">Update Supplier</h5>
+            </div>
+            <div class="modal-body">
+                <form id="panel_supplier_form_update">
+                    <input id="panel_supplier_id_update" name="panel_supplier_id_update" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;" >
+                            <div style="margin-right : 56px">Vendor Code</div>
+                            <div  id="panel_user_department_data">
+                            <input type="text" class="supplier-input" placeholder="Vendor Code"
+                                id="panel_supplier_code_update" name="panel_supplier_code_update">
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; " >
+                            <div style="margin-right: 50px;" >Vendor Name</div>
+                            <div id="panel_user_department_data">
+                            <input type="text" class="supplier-input" placeholder="Vendor Code"
+                                id="panel_supplier_name_update" name="panel_supplier_name_update">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="padding-left:45px;padding-bottom: 30px;">
+                <button type="submit" id="update_panel_supplier" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

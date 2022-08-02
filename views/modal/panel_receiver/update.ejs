@@ -1,0 +1,70 @@
+<%- include('../../partial/css.ejs') %>
+<div class="modal fade" id="modal_panel_receiver_update" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document" id="pop-up-update">
+        <div class="modal-content add-user">
+            <div class="modal-header">
+                <h5 class="modal-title add-title" id="exampleModalLabel">Update User</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body"  style="margin-top: -7%">
+                <form id="panel_receiver_form_update">
+                    <input id="panel_receiver_id_update" name="panel_receiver_id_update" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <div class="form-add-label">
+                                Name
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                            <input type="text" class="form-control" placeholder="Please input the ship code"
+                                id="panel_receiver_name_update" name="panel_receiver_name_update">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Email (For send OTP!)
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                            <input type="email" class="form-control" placeholder="Please input the weight"
+                                id="panel_receiver_email_update" name="panel_receiver_email_update">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Phone
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                            <input type="text" class="form-control" placeholder="Please input the note"
+                                id="panel_receiver_phone_update" name="panel_receiver_phone_update">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Warehouse
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <select class="chosen-select" name="warehouse_option"
+                                    id="warehouse_option_update">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-t-20">
+                            <div class="form-add-label">
+                                Address
+                            </div>
+                            <div class="col-lg-12" id="panel_user_department_data">
+                                <input type="text" class="form-control" placeholder="Please select the receiver first"
+                                    id="panel_receiver_address_update" name="panel_receiver_address_update">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <button type="submit" id="update_panel_receiver" class="btn btn-primary  btn-save">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

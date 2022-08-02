@@ -1,0 +1,191 @@
+<%- include('../../partial/css') %>
+<div id="modal_panel_tracker_barang_masuk" class="modal fade" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style=" margin: 0 40px ; padding-bottom: 0;">
+                <button type="button" class="close" aria-label="Close" onclick="closeBarangMasuk(event)">
+                    <span aria-hidden="true" >&times;</span>
+                </button>
+                <button type="button" class="btn-close" aria-label="Close" data-dismiss="modal" style="display: none;"></button>
+
+                <h5 class="modal-title" id="exampleModalLabel">Barang Masuk</h5>
+                <hr size="4" width="75px" align="left" border-top="5px" >
+            </div>
+            <div class="modal-body" style="padding-top: 0px;">
+                <form id="panel_tracker_form_add">
+                    <div class="form-group">
+                        <input type="hidden" class="form-control form-barang" id="panel_tracker_id" name="panel_tracker_id">
+                        <div class="col-lg-6">
+                            <div class="m-top-bottom">
+                                <div class="barang-title">
+                                    Ship code
+                                </div>
+                                <div class="" id="panel_user_department_data">
+                                    <input type="text" class="form-control form-barang" placeholder=""
+                                        id="panel_tracker_ship_code" name="panel_tracker_ship_code">
+                                </div>
+                            </div>
+                            <div  class="m-top-bottom" >
+                                <div class="barang-title">
+                                    Supplier
+                                </div>
+                                <div class="" id="panel_user_department_data">
+                                    <select class="chosen-select form-barang" name="supplier_option"
+                                        id="supplier_option">
+                                    </select>
+                                </div>
+                            </div>
+                            <% if(user.role === 'admin_hit'){%>
+                                <div  class="m-top-bottom">
+                                    <div class="barang-title">
+                                        Warehouse
+                                    </div>
+                                    <div class="" id="panel_user_department_data">
+                                        <select class="chosen-select form-barang" name="warehouse"
+                                            id="warehouse">
+                                        </select>
+                                    </div>
+                                </div>
+                            <%}%>
+
+                            <div  class="m-top-bottom" >
+                                <div class="barang-title">
+                                    Receiver
+                                </div>
+                                <div class="" id="panel_user_department_data">
+                                    <select class="form-control form-barang" id="panel_tracker_receiver" name="panel_tracker_receiver" disabled>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div  class="m-top-bottom" >
+                                <div class="barang-title">
+                                    Jenis Barang
+                                </div>
+                                <div class="" id="panel_user_department_data">
+                                    <input type="text" class="form-control form-barang" placeholder=""
+                                        id="panel_tracker_jenis" name="panel_tracker_jenis">
+                                </div>
+                            </div>
+
+                            <div  class="m-top-bottom" >
+                                <div class="barang-title">
+                                    Weight (Kg)
+                                </div>
+                                <div class="" id="panel_user_department_data">
+                                    <input type="number" class="form-control form-barang" placeholder=""
+                                        id="panel_tracker_weight" name="panel_tracker_weight">
+                                </div>
+                            </div>
+
+                            <div  class="m-top-bottom" id = "address_package">
+                                <div class="barang-title">
+                                    Address
+                                </div>
+                                <div class="" id="panel_user_department_data">
+                                    <input type="text" class="form-control form-barang" placeholder="Please select the receiver first"
+                                        id="panel_tracker_address" name="panel_tracker_address" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-class" style="margin-left: 10px;">
+                            <table class="table table-condensed no-margin" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Surat Jalan</th>
+                                        <th>Police Number</th>
+                                        <th>Driver</th>
+                                        <th>Total Colly</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                 id="panel_tracker_location"
+                                                name="panel_tracker_delivery_note">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                id="panel_tracker_location"
+                                                name="panel_tracker_police_no">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                id="panel_tracker_location"
+                                                name="panel_tracker_driver">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                id="panel_tracker_location"
+                                                name="panel_tracker_total_colly">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-barang" id="add_row">
+                                                <i class="fas fa-plus lh-15"></i>
+                                            </button>
+
+                                            <!-- <button type="button" class="btn btn-danger" id="remove_row" name="remove_row"><i class="fas fa-minus"></i></button> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table  id="table_form" class="table table-condensed" style="width:100%">
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="save_panel_tracker" onclick="submit(event)" class="btn btn-primary" style="margin-right: 30px;">Submit</button>
+                <button type="button" id="update_panel_tracker" onclick="update(event)" class="btn btn-primary" style="display: none; margin-right: 30px;">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script>
+      function closeBarangMasuk(e){
+        console.log("masuk close barang masuk")
+          swalWithBootstrapButtons.fire({
+            title: 'Are you sure to close this form?',
+            text: "Current data will be discard!",
+            icon: 'warning',
+            showCancelButton: true,
+            allowOutsideClick: false,
+            confirmButtonText: 'Close',
+            customClass : {
+                confirmButton: 'btn btn-confirm-popup close-barangmasuk',
+                cancelButton: 'btn btn-cancel',
+                popup : 'popup-warning'
+            },
+            cancelButtonText: 'Cancel',
+            }).then((result) => {
+                    if (result.isConfirmed) {
+                    swal.fire({
+                        title : 'Closed',
+                        customClass : {
+                            popup : 'popup-warning'
+                        },
+                         timer : 1000
+                    })
+
+                    $("#modal_panel_tracker_barang_masuk .btn-close").click()
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swal.fire({
+                            title: 'Cancelled',
+                            customClass : {
+                                popup : 'popup-warning'
+                            },
+
+                        })
+                    }
+            })
+      }
+  </script>
